@@ -9,17 +9,17 @@ terraform {
 
 provider "docker" {}
 
-resource "docker_image" "ngix" {
-  name = "ngix"
+resource "docker_image" "nginx" {
+  name = "nginx"
   keep_locally = false
 }
 
-resource "docker_container" "ngix" {
-  image = docker_image.ngix.image.id
+resource "docker_container" "nginx" {
+  image = docker_image.nginx.image_id
   name = "testing-nginx"
 
   ports {
     internal = 80
-    extrnal = 8080
+    external = 8080
   }
 }
